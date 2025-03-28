@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Warung Produk Digital - Tempat Terbaik untuk Produk Digital</title>
+    <meta name="description" content="Warung Produk Digital - Jual berbagai produk digital berkualitas dengan pembayaran mudah dan cepat.">
+    <meta name="keywords" content="produk digital, beli produk digital, toko online, pembayaran QRIS, download produk digital">
+    <meta name="author" content="Warung Produk Digital">
+    <meta name="robots" content="index, follow">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: url('background-image.jpg') no-repeat center center/cover;
+            text-align: center;
+            color: white;
+        }
+        header {
+            background: rgba(0, 123, 255, 0.8);
+            color: white;
+            padding: 20px;
+            font-size: 28px;
+            font-weight: bold;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+        }
+        .container {
+            margin: 20px;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        .product {
+            background-color: rgba(255, 255, 255, 0.9);
+            padding: 20px;
+            margin: 15px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            border-radius: 15px;
+            box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.2);
+            width: 280px;
+            transition: transform 0.3s;
+            color: black;
+        }
+        .product:hover {
+            transform: scale(1.05);
+            background-color: rgba(255, 255, 255, 1);
+        }
+        .login-container, .add-product-container, .share-container {
+            background: rgba(255, 255, 255, 0.9);
+            width: 300px;
+            padding: 20px;
+            margin: 50px auto;
+            border-radius: 15px;
+            box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.2);
+            color: black;
+        }
+        .login-container input, .add-product-container input, .add-product-container textarea {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        .login-container button, .add-product-container button, .share-container button {
+            background: #007bff;
+            color: white;
+            border: none;
+            padding: 10px;
+            width: 100%;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .login-container button:hover, .add-product-container button:hover, .share-container button:hover {
+            background: #0056b3;
+        }
+    </style>
+    <script>
+        function showPayment(productName) {
+            document.getElementById("paymentModal").style.display = "block";
+            document.getElementById("productTitle").innerText = "Pembayaran untuk " + productName;
+        }
+        function closePayment() {
+            document.getElementById("paymentModal").style.display = "none";
+        }
+        function addProduct(event) {
+            event.preventDefault();
+            let name = document.getElementById("productName").value;
+            let description = document.getElementById("productDescription").value;
+            if (name && description) {
+                let productContainer = document.createElement("div");
+                productContainer.classList.add("product");
+                productContainer.innerHTML = `<h3>${name}</h3><p>${description}</p><button onclick="showPayment('${name}')">Beli Sekarang</button>`;
+                document.querySelector(".container").appendChild(productContainer);
+                document.getElementById("addProductForm").reset();
+            }
+        }
+        function shareWebsite() {
+            let url = window.location.href;
+            let text = "Cek Warung Produk Digital! Tempat terbaik untuk produk digital berkualitas.";
+            let twitter = `https://twitter.com/intent/tweet?text=${encodeURIComponent(text)}&url=${encodeURIComponent(url)}`;
+            let facebook = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(url)}`;
+            let whatsapp = `https://api.whatsapp.com/send?text=${encodeURIComponent(text + ' ' + url)}`;
+            let tiktok = `https://www.tiktok.com/share?url=${encodeURIComponent(url)}&text=${encodeURIComponent(text)}`;
+            document.getElementById("twitterShare").href = twitter;
+            document.getElementById("facebookShare").href = facebook;
+            document.getElementById("whatsappShare").href = whatsapp;
+            document.getElementById("tiktokShare").href = tiktok;
+        }
+    </script>
+</head>
+<body onload="shareWebsite()">
+    <header>Warung Produk Digital</header>
+    
+    <div class="share-container">
+        <h2>Bagikan Website</h2>
+        <a id="twitterShare" target="_blank"><button>Bagikan ke Twitter</button></a>
+        <a id="facebookShare" target="_blank"><button>Bagikan ke Facebook</button></a>
+        <a id="whatsappShare" target="_blank"><button>Bagikan ke WhatsApp</button></a>
+        <a id="tiktokShare" target="_blank"><button>Bagikan ke TikTok</button></a>
+    </div>
+    
+    <div class="login-container">
+        <h2>Login</h2>
+        <form>
+            <input type="text" placeholder="Username" required>
+            <input type="password" placeholder="Password" required>
+            <button type="submit">Masuk</button>
+        </form>
+    </div>
+    
+    <div class="add-product-container">
+        <h2>Tambahkan Produk Digital</h2>
+        <form id="addProductForm" onsubmit="addProduct(event)">
+            <input type="text" id="productName" placeholder="Nama Produk" required>
+            <textarea id="productDescription" placeholder="Deskripsi Produk" required></textarea>
+            <button type="submit">Tambahkan</button>
+        </form>
+    </div>
+</body>
+</html>
