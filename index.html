@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Warung Produk Digital - Tempat Terbaik untuk Produk Digital</title>
+    <meta name="description" content="Warung Produk Digital - Jual berbagai produk digital berkualitas dengan pembayaran mudah dan cepat.">
+    <meta name="keywords" content="produk digital, beli produk digital, toko online, pembayaran QRIS, download produk digital">
+    <meta name="author" content="Warung Produk Digital">
+    <meta name="robots" content="index, follow">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: url('background-image.jpg') no-repeat center center/cover;
+            text-align: center;
+            color: white;
+        }
+        header {
+            background: rgba(0, 123, 255, 0.8);
+            color: white;
+            padding: 20px;
+            font-size: 28px;
+            font-weight: bold;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+        }
+        .container {
+            margin: 20px;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        .product {
+            background-color: rgba(255, 255, 255, 0.9);
+            padding: 20px;
+            margin: 15px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            border-radius: 15px;
+            box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.2);
+            width: 280px;
+            transition: transform 0.3s;
+            color: black;
+        }
+        .product:hover {
+            transform: scale(1.05);
+            background-color: rgba(255, 255, 255, 1);
+        }
+        .login-container {
+            background: rgba(255, 255, 255, 0.9);
+            width: 300px;
+            padding: 20px;
+            margin: 50px auto;
+            border-radius: 15px;
+            box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.2);
+            color: black;
+        }
+        .login-container input {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        .login-container button {
+            background: #007bff;
+            color: white;
+            border: none;
+            padding: 10px;
+            width: 100%;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .login-container button:hover {
+            background: #0056b3;
+        }
+    </style>
+    <script>
+        function showPayment(productName) {
+            document.getElementById("paymentModal").style.display = "block";
+            document.getElementById("productTitle").innerText = "Pembayaran untuk " + productName;
+        }
+        function closePayment() {
+            document.getElementById("paymentModal").style.display = "none";
+        }
+    </script>
+</head>
+<body>
+    <header>Warung Produk Digital</header>
+    
+    <div class="login-container">
+        <h2>Login</h2>
+        <form>
+            <input type="text" placeholder="Username" required>
+            <input type="password" placeholder="Password" required>
+            <button type="submit">Masuk</button>
+        </form>
+    </div>
+    
+    <div class="container">
+        <div class="product">
+            <h3>E-Book Desain Grafis</h3>
+            <p>E-Book lengkap tentang desain grafis untuk pemula hingga mahir.</p>
+            <button onclick="showPayment('E-Book Desain Grafis')">Beli Sekarang</button>
+        </div>
+        <div class="product">
+            <h3>Template Website</h3>
+            <p>Kumpulan template website HTML dan CSS yang siap digunakan.</p>
+            <button onclick="showPayment('Template Website')">Beli Sekarang</button>
+        </div>
+        <div class="product">
+            <h3>Audio Premium</h3>
+            <p>Koleksi musik bebas royalti untuk proyek kreatif Anda.</p>
+            <button onclick="showPayment('Audio Premium')">Beli Sekarang</button>
+        </div>
+        <div class="product">
+            <h3>Font Eksklusif</h3>
+            <p>Kumpulan font premium untuk desain profesional.</p>
+            <button onclick="showPayment('Font Eksklusif')">Beli Sekarang</button>
+        </div>
+        <div class="product">
+            <h3>Preset Lightroom</h3>
+            <p>Koleksi preset Lightroom untuk editing foto lebih menarik.</p>
+            <button onclick="showPayment('Preset Lightroom')">Beli Sekarang</button>
+        </div>
+        <div class="product">
+            <h3>Stock Video</h3>
+            <p>Video premium bebas royalti untuk keperluan proyek multimedia.</p>
+            <button onclick="showPayment('Stock Video')">Beli Sekarang</button>
+        </div>
+    </div>
+    
+    <div id="paymentModal" class="payment-modal">
+        <h3 id="productTitle"></h3>
+        <p>Silakan scan QRIS di bawah untuk pembayaran:</p>
+        <img src="qris-placeholder.png" alt="QRIS Pembayaran" width="200">
+        <br><br>
+        <button onclick="closePayment()">Tutup</button>
+    </div>
+</body>
+</html>
